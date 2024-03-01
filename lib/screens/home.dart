@@ -34,6 +34,7 @@ class _DashboardState extends State<Dashboard> {
     }
   ];
   bool isLoading = false;
+  int _selectedIndex = 0;
 
   @override
   void initState() {
@@ -90,6 +91,21 @@ class _DashboardState extends State<Dashboard> {
                 );
               },
             ),
+            bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.notes),
+            label: 'Notes',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'User',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+      ),
+    
     );
   }
   void _onItemTapped(int index) {
