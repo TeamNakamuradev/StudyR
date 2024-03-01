@@ -69,28 +69,7 @@ class _DashboardState extends State<Dashboard> {
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, // number of items per row
-              ),
-              itemCount: folders.length,
-              itemBuilder: (context, index) {
-                return Card(
-                  child: GridTile(
-                    child: Icon(Icons.folder, size: 100),
-                    footer: Center(
-                      child: Text(
-                        folders[index]['name'],
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                );
-              },
-            ),
+          : FolderDisplay(files: folders),
             bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(

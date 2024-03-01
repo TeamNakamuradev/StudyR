@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => Dashboard(),
         '/pdfviewer': (context) => pdfviewer(),
       },
-      initialRoute: '/pdfviewer',
+      initialRoute: '/home',
     );
   }
 }
