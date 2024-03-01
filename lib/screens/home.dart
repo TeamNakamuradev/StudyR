@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:studyr/utils/gridgenerator.dart';
+import 'package:studyr/screens/notes_screen.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -32,7 +33,8 @@ class _DashboardState extends State<Dashboard> {
 
     }
   ];
-  bool isLoading = false; //make this true after adding an API
+  bool isLoading = false;
+  int _selectedIndex = 0;
 
   @override
   void initState() {
@@ -67,7 +69,62 @@ class _DashboardState extends State<Dashboard> {
           ? Center(
               child: CircularProgressIndicator(),
             )
-            : FolderDisplay(files: folders),
+          : GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, // number of items per row
+              ),
+              itemCount: folders.length,
+              itemBuilder: (context, index) {
+                return Card(
+                  child: GridTile(
+                    child: Icon(Icons.folder, size: 100),
+                    footer: Center(
+                      child: Text(
+                        folders[index]['name'],
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+            bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.notes),
+            label: 'Notes',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'User',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+      ),
+    
     );
   }
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+
+    if (index == 0) {
+       Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => NotesScreen()),
+      );
+
+    } else if (index == 1) {
+     
+    }
+  }
+  
+ 
+
 }
+
