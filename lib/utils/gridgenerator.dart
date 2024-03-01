@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:studyr/utils/hex.dart';
 
 class FolderDisplay extends StatefulWidget {
   final List<dynamic> files;
@@ -20,31 +21,52 @@ class _FolderDisplayState extends State<FolderDisplay> {
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : GridView.builder(
-              // Remove the gridDelegate from build
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, // number of items per row
-              ),
-              itemCount: widget.files.length,
-              itemBuilder: (context, index) {
-                final file = widget.files[index];
-                return Card(
-                  child: GridTile(
-                    child: file['iconUrl'] != null
-                        ? Image.network(file['iconUrl']!)
-                        : Icon(Icons.folder, size: 100),
-                    footer: Center(
-                      child: Text(
-                        file['name'],
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
+          : Container(
+              color: Colors.transparent, // change this to your preferred color
+              child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2, // number of items per row
+                ),
+                itemCount: widget.files.length,
+                itemBuilder: (context, index) {
+                  final file = widget.files[index];
+                  return Card(
+                    elevation: 0,
+                    child: GridTile(
+                      child: InkWell(
+                        onTap: () {
+                          if (file['type'] == 'folder') {
+                            // add navigation to folder
+                          } else {
+                            // add navigation to file
+                          }
+                        },
+                        child: Align(
+                          alignment: Alignment(0, -0.4),
+                          child: Container(
+                            child: file['iconUrl'] != null
+                                ? Image.network(file['iconUrl']!)
+                                : Icon(
+                                    Icons.folder_rounded,
+                                    size: 150,
+                                    color: HexColor("#438DE6"),
+                                  ),
+                          ),
+                        ),
+                      ),
+                      footer: Center(
+                        child: Text(
+                          file['name'],
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
     );
   }

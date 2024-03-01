@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:studyr/screens/home.dart';
+import 'package:studyr/screens/viewer.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,8 +21,9 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         '/home': (context) => Dashboard(),
+        '/pdfviewer': (context) => pdfviewer(),
       },
-      initialRoute: '/home',
+      initialRoute: '/pdfviewer',
     );
   }
 }
