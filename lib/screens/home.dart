@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:studyr/utils/gridgenerator.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -12,31 +13,31 @@ class _DashboardState extends State<Dashboard> {
   List folders = [
     {
       'name': 'Folder 1',
-      'iconUrl': 'https://your-api-url.com/folder1.png',
+
     },
     {
       'name': 'Folder 2',
-      'iconUrl': 'https://your-api-url.com/folder2.png',
+
     },
     {
       'name': 'Folder 3',
-      'iconUrl': 'https://your-api-url.com/folder3.png',
+
     },
     {
       'name': 'Folder 4',
-      'iconUrl': 'https://your-api-url.com/folder4.png',
+
     },
     {
       'name': 'Folder 5',
-      'iconUrl': 'https://your-api-url.com/folder5.png',
+
     }
   ];
-  bool isLoading = false;
+  bool isLoading = false; //make this true after adding an API
 
   @override
   void initState() {
     super.initState();
-    // this.fetchFolders();
+    // this.fetchFolders(); // uncomment this line to fetch folders from an API
   }
 
   // fetchFolders() async {
@@ -66,28 +67,7 @@ class _DashboardState extends State<Dashboard> {
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, // number of items per row
-              ),
-              itemCount: folders.length,
-              itemBuilder: (context, index) {
-                return Card(
-                  child: GridTile(
-                    child: Icon(Icons.folder, size: 100),
-                    footer: Center(
-                      child: Text(
-                        folders[index]['name'],
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                );
-              },
-            ),
+            : FolderDisplay(files: folders),
     );
   }
 }
