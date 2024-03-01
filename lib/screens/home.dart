@@ -118,8 +118,7 @@ class _DashboardState extends State<Dashboard> {
       );
 
     } else if (index == 1) {
-      // Handle User tab navigation
-      // You can navigate to another screen or perform any other action here
+     
     }
   }
   
