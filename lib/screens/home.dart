@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:studyr/utils/gridgenerator.dart';
 import 'package:studyr/screens/notes_screen.dart';
 
 class Dashboard extends StatefulWidget {
@@ -13,32 +14,31 @@ class _DashboardState extends State<Dashboard> {
   List folders = [
     {
       'name': 'Folder 1',
-      'iconUrl': 'https://your-api-url.com/folder1.png',
+
     },
     {
       'name': 'Folder 2',
-      'iconUrl': 'https://your-api-url.com/folder2.png',
+
     },
     {
       'name': 'Folder 3',
-      'iconUrl': 'https://your-api-url.com/folder3.png',
+
     },
     {
       'name': 'Folder 4',
-      'iconUrl': 'https://your-api-url.com/folder4.png',
+
     },
     {
       'name': 'Folder 5',
-      'iconUrl': 'https://your-api-url.com/folder5.png',
+
     }
   ];
   bool isLoading = false;
-  int _selectedIndex = 0;
 
   @override
   void initState() {
     super.initState();
-    // this.fetchFolders();
+    // this.fetchFolders(); // uncomment this line to fetch folders from an API
   }
 
   // fetchFolders() async {
@@ -90,20 +90,6 @@ class _DashboardState extends State<Dashboard> {
                 );
               },
             ),
-           bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notes),
-            label: 'Notes',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'User',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-      ),
     );
   }
   void _onItemTapped(int index) {
