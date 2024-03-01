@@ -5,27 +5,32 @@ import 'package:http/http.dart' as http;
 class Dashboard extends StatefulWidget {
   @override
   _DashboardState createState() => _DashboardState();
+  static const routeName = '/home';
 }
 
 class _DashboardState extends State<Dashboard> {
   List folders = [
     {
       'name': 'Folder 1',
-      'iconUrl':
-          'https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_960_720.jpg',
+      'iconUrl': 'https://your-api-url.com/folder1.png',
     },
     {
       'name': 'Folder 2',
-      'iconUrl':
-          'https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_960_720.jpg',
+      'iconUrl': 'https://your-api-url.com/folder2.png',
     },
     {
       'name': 'Folder 3',
-      'iconUrl':
-          'https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_960_720.jpg',
+      'iconUrl': 'https://your-api-url.com/folder3.png',
     },
+    {
+      'name': 'Folder 4',
+      'iconUrl': 'https://your-api-url.com/folder4.png',
+    },
+    {
+      'name': 'Folder 5',
+      'iconUrl': 'https://your-api-url.com/folder5.png',
+    }
   ];
-  // bool isLoading = true;
   bool isLoading = false;
 
   @override
@@ -61,22 +66,24 @@ class _DashboardState extends State<Dashboard> {
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : ListView.builder(
+          : GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, // number of items per row
+              ),
               itemCount: folders.length,
               itemBuilder: (context, index) {
                 return Card(
-                  child: ListTile(
-                    leading: CircleAvatar(
-                      backgroundImage: NetworkImage(folders[index]['iconUrl']),
-                    ),
-                    title: Text(
-                      folders[index]['name'],
-                      style: TextStyle(
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.bold,
+                  child: GridTile(
+                    child: Icon(Icons.folder, size: 100),
+                    footer: Center(
+                      child: Text(
+                        folders[index]['name'],
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                    tileColor: index % 2 == 0 ? Colors.white : Colors.grey[200],
                   ),
                 );
               },
