@@ -8,13 +8,20 @@ import 'package:studyr/screens/login.dart';
 import 'package:studyr/screens/signup.dart';
 import 'package:studyr/screens/viewer.dart';
 import 'color_schemes.g.dart';
+import 'package:studyr/utils/swiper.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+   MyApp({super.key});
+
+  final List<StudySession> sessions = [
+    StudySession(sessionID: "sessionID", members: ["members"], tags: ["tags"]),
+    StudySession(sessionID: "sessionID", members: ["members"], tags: ["tags"]),
+    StudySession(sessionID: "sessionID", members: ["members"], tags: ["tags"]),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -24,12 +31,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
       darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
       routes: {
-        '/home': (context) => Home(),
+        '/home': (context) => Swiper(sessions: sessions,),
         '/pdfviewer': (context) => PDFViewer(
               pdfUrl:
                   'https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf',
             ),
-     
+        
         '/login': (context) => LoginPage(),
         '/signup': (context) => SignupPage(),
         '/leaderboard': (context) => LeaderboardPage(
@@ -71,6 +78,31 @@ class MyApp extends StatelessWidget {
     
   ], communityName: '',
 ),
+        '/community': (context) => CommunityPage(
+              communities: [
+                Community(
+                  id: '11',
+                  name: 'Computer Science',
+                  users: ['User1', 'User2', 'User3'],
+                ),
+                Community(
+                  id: '22',
+                  name: 'Mathematics',
+                  users: ['User4', 'User5', 'User6'],
+                ),
+                Community(
+                  id: '33',
+                  name: 'Physics',
+                  users: ['User7', 'User8', 'User9'],
+                ),
+                Community(
+                  id: '44',
+                  name: 'Biology',
+                  users: ['User10', 'User11', 'User12'],
+                ),
+              ],
+              communityName: '',
+            ),
       },
       initialRoute: '/community',
     );
