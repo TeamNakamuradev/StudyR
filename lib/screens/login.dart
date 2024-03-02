@@ -47,28 +47,24 @@ class _LoginPageState extends State<LoginPage> {
         height: double.maxFinite,
         decoration: const BoxDecoration(
             gradient: LinearGradient(colors: [
-          Color.fromRGBO(21, 21, 21, 1),
-          Color.fromARGB(255, 18, 21, 16)
+          Color.fromRGBO(248, 243, 243, 1),
+          Color.fromARGB(255, 242, 239, 239)
         ])),
         child: SafeArea(
           child: Center(
             child: ListView(
-              // mainAxisAlignment: MainAxisAlignment.center,
+             
               children: [
-                // const Icon(
-                //   Icons.account_circle,
-                //   color: Colors.white,
-                //   size: 100,
-                // ),
+        
 
                 const SizedBox(
                   height: 88,
                 ),
                 Align(
                   alignment: Alignment.center,
-                  child: const Text("Hello Again!",
+                  child: const Text("Study Buddy !",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Color.fromARGB(255, 12, 11, 11),
                         fontWeight: FontWeight.bold,
                         fontSize: 40,
                       )),
@@ -78,9 +74,9 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 Align(
                   alignment: Alignment.center,
-                  child: const Text("Nice Seeing you back !!!",
+                  child: const Text("Connect, Colloborate, Compete !!!",
                       style: TextStyle(
-                        color: Color.fromARGB(255, 191, 187, 187),
+                        color: Color.fromARGB(255, 17, 8, 8),
                         fontSize: 20,
                       )),
                 ),
@@ -95,21 +91,28 @@ class _LoginPageState extends State<LoginPage> {
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 30.0),
+                      padding: const EdgeInsets.only(left: 0.0),
                       child: TextField(
                         controller: idController,
                         decoration: InputDecoration(
-                          border: InputBorder.none,
-                          icon: const Icon(
+                          filled: true,
+                          fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black),
+                          ),
+                          prefixIcon: const Icon(
                             Icons.person,
-                            color: Colors.green,
+                            color: Color.fromARGB(255, 87, 76, 207),
                           ),
                           hintText: "User ID",
                           hintStyle: TextStyle(
                             color: Color.fromARGB(255, 103, 101, 101),
                           ),
                         ),
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.black),
                       ),
                     ),
                   ),
@@ -125,22 +128,31 @@ class _LoginPageState extends State<LoginPage> {
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 30.0),
+                      padding: const EdgeInsets.only(left: 0.0),
                       child: TextField(
                         controller: pwdController,
                         obscureText: true,
                         decoration: InputDecoration(
-                          border: InputBorder.none,
-                          icon: const Icon(
+                          filled: true,
+                          fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          prefixIcon: const Icon(
                             Icons.lock,
-                            color: Color.fromARGB(255, 110, 130, 105),
+                            color: Color.fromARGB(255, 69, 128, 215),
                           ),
                           hintText: "Password",
                           hintStyle: TextStyle(
                             color: Color.fromARGB(255, 103, 101, 101),
                           ),
                         ),
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: const Color.fromARGB(255, 2, 2, 2)),
                       ),
                     ),
                   ),
@@ -158,34 +170,8 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     child: TextButton(
                       onPressed: () async {
-                        // var url = Uri.https('192.168.0.101:3000',
-                        //     '/auth/signin'); //If you want to check in android emulator, use your machine's IP address instead of localhost
-                        // var httpClient =
-                        //     new HttpClient(); // Create an HTTP client
-                        // httpClient.badCertificateCallback =
-                        //     (X509Certificate cert, String host, int port) {
-                        //   return true; // Accept all certificates
-                        // }; // remove this line in production!!!!!!!!!!!!!!!!!!!
-                        // var ioClient = new IOClient(
-                        //     httpClient); // Create an IOClient with the previously defined HttpClient
-
-                        // var response = await ioClient.post(
-                        //   url,
-                        //   headers: {"Content-Type": "application/json"},
-                        //   body: jsonEncode({
-                        //     'UserID': idController.text,
-                        //     'password': pwdController.text,
-                        //   }),
-                        // ); // Make the HTTP request
-
-                        // var statusCode = response.statusCode;
-                        // ioClient
-                        //     .close(); // Close the IOClient after the request but use this only in development!!!!!!!!!!!!!!!!!!!
-
-                        //Make the HTTP request
                         var response = await http.post(
-                          Uri.parse(
-                              'http://localhost:3000' + '/auth/signin'),
+                          Uri.parse('http://localhost:3000' + '/auth/signin'),
                           headers: {"Content-Type": "application/json"},
                           body: jsonEncode({
                             'UserID': idController.text,
@@ -211,9 +197,7 @@ class _LoginPageState extends State<LoginPage> {
                               MaterialPageRoute(
                                   builder: (context) =>
                                       DashboardPage(userName: 'userName')));
-                          // Rest of your code for handling success
                         } else {
-                          // Handle failure
                           print("Login Failed");
                         }
                       },
@@ -256,6 +240,13 @@ class _LoginPageState extends State<LoginPage> {
                           )),
                     ),
                   ],
+                ),
+                const SizedBox(
+                  height: 20, 
+                ),
+                Center(
+                  child: Image.network('https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                      width: 200, height: 200), 
                 )
               ],
             ),
