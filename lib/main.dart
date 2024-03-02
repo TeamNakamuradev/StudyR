@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:studyr/screens/dashboard.dart';
 import 'package:studyr/screens/home.dart';
+import 'package:studyr/screens/login.dart';
+import 'package:studyr/screens/signup.dart';
 import 'package:studyr/screens/viewer.dart';
 import 'color_schemes.g.dart';
 
@@ -23,8 +26,14 @@ class MyApp extends StatelessWidget {
               pdfUrl:
                   'https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf',
             ),
+        '/dashboard': (context) => Builder(
+              builder: (BuildContext context) =>
+                  DashboardPage(userName: 'John Doe'),
+            ),
+        '/login': (context) => LoginPage(),
+        '/signup': (context) => SignupPage(),
       },
-      initialRoute: '/home',
+      initialRoute: '/login',
     );
   }
 }
