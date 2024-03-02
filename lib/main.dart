@@ -20,9 +20,12 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         '/home': (context) => Dashboard(),
-        '/pdfviewer': (context) => pdfviewer(),
+        '/pdfviewer': (context) => PDFViewer(
+              pdfUrl:
+                  'https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf',
+            ),
       },
-      initialRoute: '/home',
+      initialRoute: '/pdfviewer',
     );
   }
 }
