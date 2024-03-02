@@ -69,7 +69,7 @@ class _DashboardState extends State<Dashboard> {
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : FolderDisplay(files: folders),
+          : FolderGrid(files: folders),
             bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
