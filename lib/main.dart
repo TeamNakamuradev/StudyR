@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
                   'https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf',
             ),
       },
-      initialRoute: '/home',
+      initialRoute: '/pdfviewer',
     );
   }
 }
