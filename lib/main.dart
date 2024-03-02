@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:studyr/screens/community.dart';
 import 'package:studyr/screens/dashboard.dart';
 import 'package:studyr/screens/home.dart';
 import 'package:studyr/screens/login.dart';
@@ -32,8 +33,9 @@ class MyApp extends StatelessWidget {
             ),
         '/login': (context) => LoginPage(),
         '/signup': (context) => SignupPage(),
+        '/community': (context) => CommunityPage(imageUrls: ["imageUrls"]),
       },
-      initialRoute: '/login',
+      initialRoute: '/community',
     );
   }
 }
