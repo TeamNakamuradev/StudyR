@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         '/signup': (context) => SignupPage(),
         '/community': (context) => CommunityPage(imageUrls: ["imageUrls"]),
       },
-      initialRoute: '/community',
+      initialRoute: '/home',
     );
   }
 }

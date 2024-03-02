@@ -2,9 +2,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:http/io_client.dart';
+// import 'package:http/io_client.dart';
 import 'package:studyr/screens/dashboard.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:studyr/config.dart';
 
 class HexColor extends Color {
   static int _getColorFromHex(String hexColor) {
@@ -171,12 +172,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: TextButton(
                       onPressed: () async {
                         var response = await http.post(
-                          Uri.parse('http://localhost:3000' + '/auth/signin'),
-                          headers: {"Content-Type": "application/json"},
-                          body: jsonEncode({
-                            'UserID': idController.text,
-                            'password': pwdController.text,
-                          }),
+                          Uri.parse("$server_url/login"), 
                         );
 
                         print('Status Code: ${response.statusCode}');
@@ -244,10 +240,10 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(
                   height: 20, 
                 ),
-                Center(
-                  child: Image.network('https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-                      width: 200, height: 200), 
-                )
+                // Center(
+                //   child: Image.network('https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                //       width: 200, height: 200), 
+                // )
               ],
             ),
           ),

@@ -6,10 +6,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 Future<List<String>?> getLoginDetails() async {
   final prefs = await SharedPreferences.getInstance();
-
+  var token = prefs.getString("loginToken");
+  
   var username = prefs.getString("username");
   var password = prefs.getString("password");
-
+  
   if (username == null || password == null) {
     return null;
   } else {
