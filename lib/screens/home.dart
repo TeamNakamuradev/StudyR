@@ -4,13 +4,13 @@ import 'package:http/http.dart' as http;
 import 'package:studyr/utils/gridgenerator.dart';
 import 'package:studyr/screens/notes_screen.dart';
 
-class Dashboard extends StatefulWidget {
+class Home extends StatefulWidget {
   @override
-  _DashboardState createState() => _DashboardState();
+  _HomeState createState() => _HomeState();
   static const routeName = '/home';
 }
 
-class _DashboardState extends State<Dashboard> {
+class _HomeState extends State<Home> {
   List folders = [
     {
       'name': 'Folder 1',

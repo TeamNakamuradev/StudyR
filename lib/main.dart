@@ -15,16 +15,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(useMaterial3: true,colorScheme: lightColorScheme),
-      darkTheme: ThemeData(useMaterial3: true,colorScheme: darkColorScheme),
+      theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
+      darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
       routes: {
-        '/home': (context) => Dashboard(),
+        '/home': (context) => Home(),
         '/pdfviewer': (context) => PDFViewer(
               pdfUrl:
                   'https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf',
             ),
       },
-      initialRoute: '/pdfviewer',
+      initialRoute: '/home',
     );
   }
 }
