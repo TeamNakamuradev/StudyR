@@ -29,10 +29,7 @@ class MyApp extends StatelessWidget {
               pdfUrl:
                   'https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf',
             ),
-        '/dashboard': (context) => Builder(
-              builder: (BuildContext context) =>
-                  DashboardPage(userName: 'John Doe'),
-            ),
+     
         '/login': (context) => LoginPage(),
         '/signup': (context) => SignupPage(),
         '/leaderboard': (context) => LeaderboardPage(
