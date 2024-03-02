@@ -33,7 +33,35 @@ class MyApp extends StatelessWidget {
             ),
         '/login': (context) => LoginPage(),
         '/signup': (context) => SignupPage(),
-        '/community': (context) => CommunityPage(imageUrls: ["imageUrls"]),
+       '/community': (context) => CommunityPage(
+  communities: [
+    Community(
+      id: '11',
+      name: 'Computer Science',
+      users: ['User1', 'User2', 'User3'],
+     
+    ),
+    Community(
+      id: '22',
+      name: 'Mathematics',
+      users: ['User4', 'User5', 'User6'],
+  
+    ),
+    Community(
+      id: '33',
+      name: 'Physics',
+      users: ['User7', 'User8', 'User9'],
+  
+    ),
+    Community(
+      id: '44',
+      name: 'Biology',
+      users: ['User10', 'User11', 'User12'],
+  
+    ),
+    
+  ], communityName: '',
+),
       },
       initialRoute: '/home',
     );

@@ -39,6 +39,7 @@ dependencies:
   shared_preferences: ^2.2.2
   syncfusion_flutter_pdfviewer: ^24.2.8
   line_icons: ^2.0.3
+  flutter_swiper_null_safety: ^1.0.2
 
 dev_dependencies:
   flutter_test:
@@ -46,6 +47,7 @@ dev_dependencies:
   shared_preferences: ^2.0.8
   provider: ^5.0.0
   timer_builder: ^2.0.0
+  
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
