@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:studyr/screens/swipe_page.dart';
-
 class Community {
   final String id;
   final String name;
@@ -33,7 +32,7 @@ class CommunityPage extends StatelessWidget {
   Navigator.push(
     context,
     MaterialPageRoute(
-      builder: (context) => SwipePage(community: communities[index]),
+      builder: (context) => SwipePage(title: communities[index].name, community: communities[index]),
     ),
   );
 },
@@ -62,8 +61,8 @@ class CommunityPage extends StatelessWidget {
                             IconButton(
                               icon: Icon(Icons.leaderboard),
                               onPressed: () {
-                             
-                              },
+                        Navigator.pushNamed(context, '/leaderboard');
+                      },
                             ),
                           ],
                         ),
@@ -79,3 +78,4 @@ class CommunityPage extends StatelessWidget {
     );
   }
 }
+
