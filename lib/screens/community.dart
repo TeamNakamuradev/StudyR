@@ -92,50 +92,53 @@ class _CommunityPageState extends State<CommunityPage> {
               children: [
                 // Background image
 
-                // Content on top of the image
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('${widget.communities[index].name}',
-                          style:
-                              TextStyle(fontSize: 28, color: Colors.white)),
-                      // Text('Community ID: ${communities[index].id}',
-                      //     style:
-                      //         TextStyle(fontSize: 16, color: Colors.white)),
-                      // Text('Users: ${communities[index].users.join(', ')}',
-                      //     style:
-                      //         TextStyle(fontSize: 16, color: Colors.white)),
-                      Row(
-                        children: [
-                          Expanded(child: Container()),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              IconButton(
-                                icon: Icon(Icons.info),
-                                onPressed: () {},
-                              ),
-                              IconButton(
-                                icon: Icon(Icons.leaderboard),
-                                onPressed: () {
-                                  Navigator.pushNamed(
-                                      context, '/leaderboard');
-                                },
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
+                  // Content on top of the image
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('${communities[index].name}',
+                            style:
+                                TextStyle(fontSize: 28, color: Colors.white)),
+                        // Text('Community ID: ${communities[index].id}',
+                        //     style:
+                        //         TextStyle(fontSize: 16, color: Colors.white)),
+                        // Text('Users: ${communities[index].users.join(', ')}',
+                        //     style:
+                        //         TextStyle(fontSize: 16, color: Colors.white)),
+                        Row(
+                          children: [
+                            Expanded(child: Container()),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                IconButton(
+                                  icon: Icon(Icons.info),
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, '/info');
+                                  },
+                                ),
+                                IconButton(
+                                  icon: Icon(Icons.leaderboard),
+                                  onPressed: () {
+                                    Navigator.pushNamed(
+                                        context, '/leaderboard');
+                                  },
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

@@ -1,53 +1,152 @@
+
+
+// import 'package:flutter/material.dart';
+// import 'package:studyr/screens/login.dart';
+
+// class Home extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: Stack(
+//         children: [
+//           _buildCurvedBackground(context),
+//           _buildContent(context),
+//         ],
+//       ),
+//     );
+//   }
+
+//   Widget _buildCurvedBackground(BuildContext context) {
+//     return ClipPath(
+//       clipper: CurveClipper(),
+//       child: Container(
+//         color: Colors.black87,
+//         height: MediaQuery.of(context).size.height * 0.5,
+//       ),
+//     );
+//   }
+
+//   Widget _buildContent(BuildContext context) {
+//     return Column(
+//       mainAxisAlignment: MainAxisAlignment.center,
+//       crossAxisAlignment: CrossAxisAlignment.center,
+//       children: [
+//         SizedBox(height: 10), 
+//         Text(
+//           'Welcome to StudyR\nBuild meaningful connections, share interests, and have fun!',
+//           style: TextStyle(
+//             fontSize: 24.0,
+//             fontWeight: FontWeight.bold,
+//             color: Colors.white,
+//           ),
+//           textAlign: TextAlign.center,
+//         ),
+//         SizedBox(height: 300), 
+//         ElevatedButton(
+//           onPressed: () {
+//             Navigator.push(
+//               context,
+//               MaterialPageRoute(builder: (context) => LoginPage()),
+//             );
+//           },
+//           child: Text('Get Started'),
+//         ),
+//       ],
+//     );
+//   }
+// }
+
+// class CurveClipper extends CustomClipper<Path> {
+//   @override
+//   Path getClip(Size size) {
+//     var path = Path();
+//     path.lineTo(0, size.height * 0.85);
+//     path.quadraticBezierTo(
+//         size.width * 0.2, size.height, size.width * 0.5, size.height * 0.85);
+//     path.quadraticBezierTo(
+//         size.width * 0.8, size.height * 0.7, size.width, size.height * 0.85);
+//     path.lineTo(size.width, 0);
+//     return path;
+//   }
+
+//   @override
+//   bool shouldReclip(CustomClipper<Path> oldClipper) {
+//     return false;
+//   }
+// }
+
 import 'package:flutter/material.dart';
-import 'package:studyr/screens/community.dart';
-import 'package:studyr/utils/utlis.dart';
 import 'package:studyr/screens/login.dart';
-// import 'paclage:studyr/screens/login.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
-
-  @override
-  State<Home> createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
+class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var loginDetails = getLoginDetails();
-
-    return FutureBuilder(
-      future: loginDetails,
-      builder: (context, snap) {
-        if (snap.data == null) {
-          return LoginPage();
-        }
-        return CommunityPage(
-          communities: [
-            Community(
-              id: '11',
-              name: 'Computer Science',
-              users: ['User1', 'User2', 'User3'],
-            ),
-            Community(
-              id: '22',
-              name: 'Mathematics',
-              users: ['User4', 'User5', 'User6'],
-            ),
-            Community(
-              id: '33',
-              name: 'Physics',
-              users: ['User7', 'User8', 'User9'],
-            ),
-            Community(
-              id: '44',
-              name: 'Biology',
-              users: ['User10', 'User11', 'User12'],
-            ),
-          ],
-          communityName: '',
-        );
-      },
+    return Scaffold(
+      body: Stack(
+        children: [
+          _buildCurvedBackground(context),
+          _buildContent(context),
+        ],
+      ),
     );
+  }
+
+  Widget _buildCurvedBackground(BuildContext context) {
+    return ClipPath(
+      clipper: CurveClipper(),
+      child: AnimatedContainer(
+        duration: Duration(seconds: 1),
+        height: MediaQuery.of(context).size.height * 0.6, // Adjusted the height to make it lower
+        color: Colors.black87,
+      ),
+    );
+  }
+
+  Widget _buildContent(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        SizedBox(height: 10),
+        Text(
+          'Welcome to StudyR\nBuild meaningful connections, share interests, and have fun!',
+          style: TextStyle(
+            fontSize: 24.0,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        SizedBox(height: 200),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => LoginPage()),
+            );
+          },
+          child: Text('Get Started'),
+        ),
+      ],
+    );
+  }
+}
+
+class CurveClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    var path = Path();
+    path.lineTo(0, size.height * 0.85);
+    path.quadraticBezierTo(
+        size.width * 0.2, size.height, size.width * 0.5, size.height * 0.85);
+    path.quadraticBezierTo(
+        size.width * 0.8, size.height * 0.7, size.width, size.height * 0.85);
+    path.lineTo(size.width, 0);
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return false;
   }
 }

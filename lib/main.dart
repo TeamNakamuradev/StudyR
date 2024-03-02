@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:studyr/screens/community.dart';
 import 'package:studyr/screens/home.dart';
+import 'package:studyr/screens/info.dart';
 import 'package:studyr/screens/leaderboard.dart';
 import 'package:studyr/screens/login.dart';
 import 'package:studyr/screens/signup.dart';
@@ -36,9 +37,13 @@ class MyApp extends StatelessWidget {
               pdfUrl:
                   'https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf',
             ),
-        
+        // '/dashboard': (context) => Builder(
+        //       builder: (BuildContext context) =>
+        //           DashboardPage(userName: 'John Doe'),
+        //     ),
         '/login': (context) => LoginPage(),
         '/signup': (context) => SignupPage(),
+        '/info_dummy': (context) => CommunityInfoPage(),
         '/leaderboard': (context) => LeaderboardPage(
   users: [
     User(name: 'User1', score: 100),
@@ -78,31 +83,7 @@ class MyApp extends StatelessWidget {
     
   ], communityName: '',
 ),
-        '/community': (context) => CommunityPage(
-              communities: [
-                Community(
-                  id: '11',
-                  name: 'Computer Science',
-                  users: ['User1', 'User2', 'User3'],
-                ),
-                Community(
-                  id: '22',
-                  name: 'Mathematics',
-                  users: ['User4', 'User5', 'User6'],
-                ),
-                Community(
-                  id: '33',
-                  name: 'Physics',
-                  users: ['User7', 'User8', 'User9'],
-                ),
-                Community(
-                  id: '44',
-                  name: 'Biology',
-                  users: ['User10', 'User11', 'User12'],
-                ),
-              ],
-              communityName: '',
-            ),
+        '/info':(context) => CommunityInfoPage()
       },
       initialRoute: '/home',
     );
