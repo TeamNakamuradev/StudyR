@@ -1,6 +1,8 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:studyr/screens/community.dart';
-import 'package:studyr/screens/dashboard.dart';
+// import 'package:studyr/screens/dashboard.dart';
 import 'package:studyr/screens/home.dart';
 import 'package:studyr/screens/login.dart';
 import 'package:studyr/screens/signup.dart';
@@ -26,10 +28,6 @@ class MyApp extends StatelessWidget {
         '/pdfviewer': (context) => PDFViewer(
               pdfUrl:
                   'https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf',
-            ),
-        '/dashboard': (context) => Builder(
-              builder: (BuildContext context) =>
-                  DashboardPage(userName: 'John Doe'),
             ),
         '/login': (context) => LoginPage(),
         '/signup': (context) => SignupPage(),

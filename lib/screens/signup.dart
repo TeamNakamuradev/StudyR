@@ -1,9 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:http/io_client.dart';
-import 'package:line_icons/line_icons.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HexColor extends Color {
@@ -60,13 +58,15 @@ class _SignupPageState extends State<SignupPage> {
           child: Center(
             child: ListView(
               // mainAxisAlignment: MainAxisAlignment.center,
+              scrollDirection: Axis.vertical,
+              // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(
                   height: 78,
                 ),
-                Align(
+                const Align(
                   alignment: Alignment.center,
-                  child: const Text("StudyR",
+                  child: Text("StudyR",
                       style: TextStyle(
                         color: Color.fromARGB(255, 8, 7, 7),
                         fontWeight: FontWeight.bold,
@@ -76,9 +76,9 @@ class _SignupPageState extends State<SignupPage> {
                 const SizedBox(
                   height: 5,
                 ),
-                Align(
+                const Align(
                   alignment: Alignment.center,
-                  child: const Text(
+                  child: Text(
                       "Match Academic Spirits and unlock the power of wisdom !!!",
                       style: TextStyle(
                         color: Color.fromARGB(255, 8, 4, 4),
@@ -99,7 +99,7 @@ class _SignupPageState extends State<SignupPage> {
                       padding: const EdgeInsets.only(left: 0.0),
                       child: TextField(
                         controller: idController,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
                           border: OutlineInputBorder(
@@ -108,7 +108,7 @@ class _SignupPageState extends State<SignupPage> {
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.black),
                           ),
-                          prefixIcon: const Icon(
+                          prefixIcon: Icon(
                             Icons.person,
                             color: Color.fromARGB(255, 87, 76, 207),
                           ),
@@ -117,7 +117,7 @@ class _SignupPageState extends State<SignupPage> {
                             color: Color.fromARGB(255, 103, 101, 101),
                           ),
                         ),
-                        style: TextStyle(color: Colors.black),
+                        style: const TextStyle(color: Colors.black),
                       ),
                     ),
                   ),
@@ -136,7 +136,7 @@ class _SignupPageState extends State<SignupPage> {
                       padding: const EdgeInsets.only(left: 0.0),
                       child: TextField(
                         controller: rmnController,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
                           border: OutlineInputBorder(
@@ -145,7 +145,7 @@ class _SignupPageState extends State<SignupPage> {
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.black),
                           ),
-                          prefixIcon: const Icon(
+                          prefixIcon: Icon(
                             Icons.phone,
                             color: Color.fromARGB(255, 83, 76, 175),
                           ),
@@ -154,7 +154,7 @@ class _SignupPageState extends State<SignupPage> {
                             color: Color.fromARGB(255, 103, 101, 101),
                           ),
                         ),
-                        style: TextStyle(color: Colors.black),
+                        style: const TextStyle(color: Colors.black),
                       ),
                     ),
                   ),
@@ -174,7 +174,7 @@ class _SignupPageState extends State<SignupPage> {
                       child: TextField(
                         controller: pwdController,
                         obscureText: true,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
                           border: OutlineInputBorder(
@@ -183,7 +183,7 @@ class _SignupPageState extends State<SignupPage> {
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.black),
                           ),
-                          prefixIcon: const Icon(
+                          prefixIcon: Icon(
                             Icons.lock,
                             color: Color.fromARGB(255, 82, 77, 207),
                           ),
@@ -192,7 +192,8 @@ class _SignupPageState extends State<SignupPage> {
                             color: Color.fromARGB(255, 103, 101, 101),
                           ),
                         ),
-                        style: TextStyle(color: const Color.fromARGB(255, 9, 9, 9)),
+                        style: const TextStyle(
+                            color: Color.fromARGB(255, 9, 9, 9)),
                       ),
                     ),
                   ),
@@ -218,12 +219,12 @@ class _SignupPageState extends State<SignupPage> {
                         prefs.setString('password', pwdController.text);
 
                         var url = Uri.https('localhost:3000', '/signup');
-                        var httpClient = new HttpClient();
+                        var httpClient = HttpClient();
                         httpClient.badCertificateCallback =
                             (X509Certificate cert, String host, int port) {
                           return true;
                         };
-                        var ioClient = new IOClient(httpClient);
+                        var ioClient = IOClient(httpClient);
 
                         var response = await ioClient.post(
                           url,
@@ -276,16 +277,17 @@ class _SignupPageState extends State<SignupPage> {
                       onPressed: () {
                         Navigator.pushNamed(context, '/login');
                       },
-                      child: const Text("Sign In",
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 41, 93, 220),
-                            fontSize: 15,
-                          )),
+                      child: const Text(
+                        "Sign In",
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 41, 93, 220),
+                          fontSize: 15,
+                        ),
+                      ),
                     ),
                   ],
                 )
               ],
-              scrollDirection: Axis.vertical,
             ),
           ),
         ),

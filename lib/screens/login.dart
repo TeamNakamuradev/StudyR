@@ -1,11 +1,11 @@
-import 'dart:io';
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-// import 'package:http/io_client.dart';
-import 'package:studyr/screens/dashboard.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:studyr/config.dart';
+import 'package:studyr/secrets.dart';
+import 'package:studyr/utils/utlis.dart';
 
 class HexColor extends Color {
   static int _getColorFromHex(String hexColor) {
@@ -32,6 +32,17 @@ class _LoginPageState extends State<LoginPage> {
       TextEditingController(); // Create a controller for the username
   final pwdController =
       TextEditingController(); // Create a controller for the password
+
+  bool isError = false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    isError = false;
+  }
+
   @override
   void dispose() {
     idController.dispose();
@@ -54,28 +65,27 @@ class _LoginPageState extends State<LoginPage> {
         child: SafeArea(
           child: Center(
             child: ListView(
-             
               children: [
-        
-
                 const SizedBox(
                   height: 88,
                 ),
-                Align(
+                const Align(
                   alignment: Alignment.center,
-                  child: const Text("Study Buddy !",
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 12, 11, 11),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 40,
-                      )),
+                  child: Text(
+                    "Study Buddy !",
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 12, 11, 11),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 40,
+                    ),
+                  ),
                 ),
                 const SizedBox(
                   height: 5,
                 ),
-                Align(
+                const Align(
                   alignment: Alignment.center,
-                  child: const Text("Connect, Colloborate, Compete !!!",
+                  child: Text("Connect, Colloborate, Compete !!!",
                       style: TextStyle(
                         color: Color.fromARGB(255, 17, 8, 8),
                         fontSize: 20,
@@ -95,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
                       padding: const EdgeInsets.only(left: 0.0),
                       child: TextField(
                         controller: idController,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
                           border: OutlineInputBorder(
@@ -104,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.black),
                           ),
-                          prefixIcon: const Icon(
+                          prefixIcon: Icon(
                             Icons.person,
                             color: Color.fromARGB(255, 87, 76, 207),
                           ),
@@ -113,7 +123,7 @@ class _LoginPageState extends State<LoginPage> {
                             color: Color.fromARGB(255, 103, 101, 101),
                           ),
                         ),
-                        style: TextStyle(color: Colors.black),
+                        style: const TextStyle(color: Colors.black),
                       ),
                     ),
                   ),
@@ -137,11 +147,11 @@ class _LoginPageState extends State<LoginPage> {
                           filled: true,
                           fillColor: Colors.white,
                           border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.black),
+                            borderSide: const BorderSide(color: Colors.black),
                             borderRadius: BorderRadius.circular(20),
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.black),
+                            borderSide: const BorderSide(color: Colors.black),
                             borderRadius: BorderRadius.circular(20),
                           ),
                           prefixIcon: const Icon(
@@ -149,17 +159,26 @@ class _LoginPageState extends State<LoginPage> {
                             color: Color.fromARGB(255, 69, 128, 215),
                           ),
                           hintText: "Password",
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                             color: Color.fromARGB(255, 103, 101, 101),
                           ),
                         ),
-                        style: TextStyle(color: const Color.fromARGB(255, 2, 2, 2)),
+                        style: const TextStyle(
+                            color: Color.fromARGB(255, 2, 2, 2)),
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 27,
+                Center(
+                  child: SizedBox(
+                    height: 30,
+                    child: isError
+                        ? Text(
+                            'Invalid Credentials',
+                            style: TextStyle(color: Colors.red),
+                          )
+                        : SizedBox(),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 50),
@@ -171,30 +190,37 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     child: TextButton(
                       onPressed: () async {
+                        setState(() {
+                            isError = false;
+                          });
                         var response = await http.post(
-                          Uri.parse("$server_url/login"), 
+                          Uri.parse(
+                            "$server_url/login",
+                          ),
+                          headers: {"Content-Type": "application/json"},
+                          body : jsonEncode(<String, String>{
+                            'username': idController.text,
+                            'password': pwdController.text,
+                          }),
                         );
-
-                        print('Status Code: ${response.statusCode}');
-                        print('Response Body: ${response.body}');
-
+                        
                         if (response.statusCode == 200) {
+                          
                           var responseBody = jsonDecode(response.body);
-                          print('Token: ${responseBody['token']}');
-                          print('UserID: ${responseBody['ID']}');
+                          // print('Token: ${responseBody['token']}');
+                          // print('UserID: ${responseBody['ID']}');
 
-                          SharedPreferences prefs =
-                              await SharedPreferences.getInstance();
-                          prefs.setString('token', responseBody['token']);
-                          prefs.setString('userId', responseBody['ID']);
-                          prefs.setString('userName', responseBody['UserID']);
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      DashboardPage(userName: 'userName')));
+                          saveLoginDetails(
+                            idController.text,
+                            pwdController.text,
+                          );
+
+                          Navigator.pushNamed(context, "/community");
                         } else {
                           print("Login Failed");
+                          setState(() {
+                            isError = true;
+                          });
                         }
                       },
                       child: const Center(
@@ -229,21 +255,19 @@ class _LoginPageState extends State<LoginPage> {
                       onPressed: () {
                         Navigator.pushNamed(context, '/signup');
                       },
-                      child: const Text("Sign Up",
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 41, 93, 220),
-                            fontSize: 15,
-                          )),
+                      child: const Text(
+                        "Sign Up",
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 41, 93, 220),
+                          fontSize: 15,
+                        ),
+                      ),
                     ),
                   ],
                 ),
                 const SizedBox(
-                  height: 20, 
+                  height: 20,
                 ),
-                // Center(
-                //   child: Image.network('https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-                //       width: 200, height: 200), 
-                // )
               ],
             ),
           ),
