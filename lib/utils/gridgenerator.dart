@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:studyr/utils/hex.dart';
@@ -33,6 +35,15 @@ class _FolderDisplayState extends State<FolderDisplay> {
                   return Card(
                     elevation: 0,
                     child: GridTile(
+                      footer: Center(
+                        child: Text(
+                          file['name'],
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
                       child: InkWell(
                         onTap: () {
                           if (file['type'] == 'folder') {
@@ -51,15 +62,6 @@ class _FolderDisplayState extends State<FolderDisplay> {
                                     size: 150,
                                     color: HexColor("#438DE6"),
                                   ),
-                          ),
-                        ),
-                      ),
-                      footer: Center(
-                        child: Text(
-                          file['name'],
-                          style: TextStyle(
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
