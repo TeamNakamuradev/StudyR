@@ -42,6 +42,7 @@ dependencies:
   flutter_swiper_null_safety: ^1.0.2
   flutter_session_jwt: ^0.0.6
   jwt_decoder: ^2.0.1
+  swipe_cards: ^2.0.0+1
 
 dev_dependencies:
   flutter_test:
