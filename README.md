@@ -63,7 +63,8 @@ The Studyr app follows a client-server architecture. The client is developed usi
 Studyr utilizes a relational database to store data, with main entities including:
 - **User**: Stores user information such as name, password and communities which user joined.
 - **Community**: Stores details about communities like name, list of participants, list of admin(for control access) and description.
-
+- **Post**: Stores information about posts, such as their title, content, and author.
+- **Message**: Stores information about messages, such as their sender, recipient, and content.
 ## Work-Flow 
 
 
