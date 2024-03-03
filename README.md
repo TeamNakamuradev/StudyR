@@ -76,10 +76,9 @@ Studyr utilizes a relational database to store data, with main entities includin
 ## Features
 
 ### Communities
-- Students can join or create communities based on interests and subjects.
+- Students can join or create communities based on interests and subjects by our swipe functionality.
 - Communities support multiple members.
 - Members can engage in various activities within communities including posting messages, sharing notes, and joining video calls.
-- Swipe feature to create a communities
 
 ### Chat
 - Students can chat within communities or through private messages.
