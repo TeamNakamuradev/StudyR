@@ -11,10 +11,10 @@ Studyr is a valuable tool designed to enhance collaboration, engagement, communi
 ## Target Audience
 Studyr caters to a diverse audience including students from various educational levels, educators, professionals, self-learners, and special interest groups. Whether for remote learners, international students, or homeschooling communities, Studyr offers a comprehensive solution for collaborative studying and knowledge sharing.
 
-A new Flutter project.
+
 
 ## Getting Started
-## Step-by-Step Guide to Build a Third-Party Flutter Project as a Release APK
+## Step-by-Step Guide to Build a Flutter Project as a Release APK
 
 1. **Clone the Project**:
    - First, clone or download the Flutter project from its repository using Git or directly from its source.
