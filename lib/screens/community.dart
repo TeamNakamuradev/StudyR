@@ -10,20 +10,41 @@ import 'package:studyr/screens/askPdf.dart';
 
 final List<StudySession> sessions = [
   StudySession(
-      sessionName: "Session1",
-      sessionID: "sessionID",
-      members: ["User1"],
-      topics: ["topics"]),
+    sessionID: '1',
+    sessionName: 'Number Navigator',
+    topics: ['Algebra', 'Geometry', 'Calculus'],
+    members: ['Alice', 'Bob', 'Charlie', 'David'],
+  ),
   StudySession(
-      sessionName: "Session2",
-      sessionID: "sessionID",
-      members: ["User2"],
-      topics: ["topics"]),
+    sessionID: '2',
+    sessionName: 'Flutter Workshop',
+    topics: ['Widgets', 'State Management', 'Animations'],
+    members: ['Eva', 'Frank', 'Grace', 'Henry'],
+  ),
   StudySession(
-      sessionName: "Session3",
-      sessionID: "sessionID",
-      members: ["User3"],
-      topics: ["topics"])
+    sessionID: '3',
+    sessionName: 'History Club',
+    topics: ['Ancient Civilizations', 'World Wars', 'Modern History'],
+    members: ['Ivy', 'Jack', 'Katie', 'Liam'],
+  ),
+  StudySession(
+    sessionID: '4',
+    sessionName: 'Cultural Club',
+    topics: ['Languages', 'Cuisine', 'Traditions'],
+    members: ['kateryna', 'Jack', 'Katie', 'Liam'],
+  ),
+  StudySession(
+    sessionID: '5',
+    sessionName: 'Biology Buffs',
+    topics: ['Mutations', 'Genetics', 'Evolution'],
+    members: ['catherine', 'Jack', 'Katie', 'Liam'],
+  ),
+  StudySession(
+    sessionID: '6',
+    sessionName: 'Physics Pals',
+    topics: ['Quantum Mechanics', 'Relativity', 'Astrophysics'],
+    members: ['alex', 'Jack', 'Katie', 'Liam'],
+  ),
 ];
 
 class Community {

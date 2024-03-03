@@ -88,9 +88,9 @@ class _SwiperState extends State<Swiper> {
 
 
     
-    for (int i = 0; i < sampleSessions.length; i++) {
+    for (int i = 0; i < widget.sessions.length; i++) {
       _swipeItems.add(SwipeItem(
-          content: sampleSessions[i],
+          content: widget.sessions[i],
           likeAction: () {
             Navigator.of(context).push(
               MaterialPageRoute(builder: (context) {
@@ -116,7 +116,7 @@ class _SwiperState extends State<Swiper> {
           
           ));
 
-      var members = widget.sessions[0].members.map((item) {
+      var members = widget.sessions[i].members.map((item) {
         return Container(
           child: Column(
             children: [
