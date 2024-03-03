@@ -5,35 +5,9 @@ import 'package:flutter/services.dart';
 import 'dart:io';
 import 'package:pdf/pdf.dart';
 import 'dart:io';
+
 import 'package:flutter/services.dart';
-import 'package:google_ml_kit/google_ml_kit.dart';
 
-Future<String> extractTextFromPdf(String pdfPath) async {
-  // Create an instance of the PDF Text Recognizer
-  final pdfTextRecognizer = GoogleMlKit.vision.pdfTextRecognizer();
-
-  // Load the PDF document
-  final pdfDocument = await PdfDocument.;
-
-  // Recognize text from the PDF document
-  final recognizedText = await pdfTextRecognizer.processDocument(pdfDocument);
-
-  // Extract the text from the PDF document
-  String extractedText = "";
-  for (TextBlock block in recognizedText.blocks) {
-    for (TextLine line in block.lines) {
-      for (TextElement element in line.elements) {
-        extractedText += "${element.text} ";
-      }
-      extractedText += "\n";
-    }
-  }
-
-  // Close the PDF document
-  pdfDocument.close();
-
-  return extractedText;
-}
 
 // -----
 
@@ -76,9 +50,9 @@ class _PdfUploadScreenState extends State<PdfUploadScreen> {
             if (_pdfFile != null)
               ElevatedButton(
                 onPressed: () async {
-                  var doc = await PDFDoc.fromFile(_pdfFile!);
-                  var text = doc.text;
-                  print(text);
+                  // var doc = ;
+                  // var text = doc.text;
+                  // print(text);
                 },
                 child: Text('Extract Text'),
               ),
