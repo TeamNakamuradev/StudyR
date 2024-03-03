@@ -34,10 +34,18 @@ class Swiper extends StatefulWidget {
 class _SwiperState extends State<Swiper> {
   List<SwipeItem> _swipeItems = [];
   late MatchEngine _matchEngine;
+  List<Color> _colors = [
+      
+      Colors.blue,
+      Colors.red,
+      Colors.green,
+      Colors.yellow,
+      Colors.orange
+    ];
   late List<StudySession> sampleSessions = [
     StudySession(
       sessionID: '1',
-      sessionName: 'Math Study Group',
+      sessionName: 'Number Navigator',
       topics: ['Algebra', 'Geometry', 'Calculus'],
       members: ['Alice', 'Bob', 'Charlie', 'David'],
     ),
@@ -53,23 +61,36 @@ class _SwiperState extends State<Swiper> {
       topics: ['Ancient Civilizations', 'World Wars', 'Modern History'],
       members: ['Ivy', 'Jack', 'Katie', 'Liam'],
     ),
-    // Add more sessions as needed
+    StudySession(
+      sessionID: '4',
+      sessionName: 'Cultural Club',
+      topics: ['Languages', 'Cuisine', 'Traditions'],
+      members: ['kateryna', 'Jack', 'Katie', 'Liam'],
+    ),
+    StudySession(
+      sessionID: '5',
+      sessionName: 'Biology Buffs',
+      topics: ['Mutations', 'Genetics', 'Evolution'],
+      members: ['catherine', 'Jack', 'Katie', 'Liam'],
+    ),
+    StudySession(
+      sessionID: '6',
+      sessionName: 'Physics Pals',
+      topics: ['Quantum Mechanics', 'Relativity', 'Astrophysics'],
+      members: ['alex', 'Jack', 'Katie', 'Liam'],
+    ),
+   
   ];
-
+  int _currentColorIndex = 0;
   @override
   void initState() {
     super.initState();
 
-    List<Color> _colors = [
-      Colors.red,
-      Colors.blue,
-      Colors.green,
-      Colors.yellow,
-      Colors.orange
-    ];
-    for (int i = 0; i < widget.sessions.length; i++) {
+
+    
+    for (int i = 0; i < sampleSessions.length; i++) {
       _swipeItems.add(SwipeItem(
-          content: widget.sessions[0],
+          content: sampleSessions[i],
           likeAction: () {
             Navigator.of(context).push(
               MaterialPageRoute(builder: (context) {
@@ -91,9 +112,11 @@ class _SwiperState extends State<Swiper> {
           },
           onSlideUpdate: (region) async {
             print("Region $region");
-          }));
+          },
+          
+          ));
 
-      var members = widget.sessions[i].members.map((item) {
+      var members = widget.sessions[0].members.map((item) {
         return Container(
           child: Column(
             children: [
@@ -117,6 +140,11 @@ class _SwiperState extends State<Swiper> {
     _matchEngine = MatchEngine(swipeItems: _swipeItems);
   }
 
+ Color getCurrentColor() {
+    return _colors[_currentColorIndex];
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -128,12 +156,13 @@ class _SwiperState extends State<Swiper> {
         child: SwipeCards(
           matchEngine: _matchEngine,
           itemBuilder: (BuildContext context, int index) {
+             final currentColor = getCurrentColor();
             return Card(
               elevation: 2,
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.blue[200],
+                  color:currentColor,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -144,7 +173,7 @@ class _SwiperState extends State<Swiper> {
                       child: Container(
                         alignment: Alignment.bottomLeft,
                         decoration: BoxDecoration(
-                          color: Colors.blue[200],
+                          color:currentColor,
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(10),
                             topRight: Radius.circular(10),

@@ -63,7 +63,7 @@ class SwipePage extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return new Image.asset(images[index], fit: BoxFit.fill);
         },
-        itemCount: images.length,
+        itemCount: 2,
         itemWidth: 300.0,
         layout: SwiperLayout.TINDER,
         
