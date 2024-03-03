@@ -18,9 +18,9 @@ class MyApp extends StatelessWidget {
    MyApp({super.key});
 
   final List<StudySession> sessions = [
-    StudySession(sessionID: "sessionID", members: ["members"], tags: ["tags"]),
-    StudySession(sessionID: "sessionID", members: ["members"], tags: ["tags"]),
-    StudySession(sessionID: "sessionID", members: ["members"], tags: ["tags"]),
+    StudySession(sessionName: "sessionName",sessionID: "sessionID", members: ["members"], topics: ["topics"]),
+    StudySession(sessionName: "sessionName",sessionID: "sessionID", members: ["members"], topics: ["topics"]),
+    StudySession(sessionName: "sessionName",sessionID: "sessionID", members: ["members"], topics: ["topics"]),
   ];
 
   @override
