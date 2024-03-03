@@ -40,7 +40,10 @@ class _CommunityPageState extends State<CommunityPage> {
     Community(id: '1', name: 'Community 1', users: ['User1', 'User2']),
     Community(id: '2', name: 'Community 2', users: ['User3', 'User4']),
     Community(id: '3', name: 'Community 3', users: ['User5', 'User6']),
-    
+    Community(id: '4', name: 'Community 4', users: ['User7', 'User8']),
+    Community(id: '5', name: 'Community 5', users: ['User9', 'User10']),
+
+
   ];
 
   @override
@@ -85,7 +88,7 @@ class _CommunityPageState extends State<CommunityPage> {
       itemCount: widget.communities.length,
       itemBuilder: (context, index) {
         return Card(
-          color: HexColor('#9faee9'), // Add your desired color here
+          color: HexColor('#9faee9'), 
           child: InkWell(
             onTap: () {
               Navigator.push(
@@ -97,9 +100,7 @@ class _CommunityPageState extends State<CommunityPage> {
             },
             child: Stack(
               children: [
-                // Background image
-
-                  // Content on top of the image
+               
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
