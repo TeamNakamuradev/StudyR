@@ -7,7 +7,6 @@ import 'package:studyr/screens/info.dart';
 import 'package:studyr/screens/leaderboard.dart';
 import 'package:studyr/screens/login.dart';
 import 'package:studyr/screens/signup.dart';
-import 'package:studyr/screens/viewer.dart';
 import 'color_schemes.g.dart';
 import 'package:studyr/utils/swiper.dart';
 
@@ -33,10 +32,6 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
       routes: {
         '/home': (context) => Home(),
-        '/pdfviewer': (context) => PDFViewer(
-              pdfUrl:
-                  'https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf',
-            ),
         // '/dashboard': (context) => Builder(
         //       builder: (BuildContext context) =>
         //           DashboardPage(userName: 'John Doe'),

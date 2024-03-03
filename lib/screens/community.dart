@@ -6,6 +6,7 @@ import 'package:studyr/screens/swipe_page.dart';
 import 'package:studyr/utils/hex.dart';
 import 'package:studyr/utils/swiper.dart';
 import 'package:studyr/screens/notes_screen.dart';
+import 'package:studyr/screens/askPdf.dart';
 
 final List<StudySession> sessions = [
   StudySession(
@@ -85,12 +86,20 @@ class _CommunityPageState extends State<CommunityPage> {
             label: 'ChatBot',
           ),
           NavigationDestination(icon: Icon(Icons.notes), label: 'Notes'),
+          NavigationDestination(
+              icon: Icon(Icons.document_scanner_rounded), label: 'Ask PDF'),
         ],
       ),
       appBar: AppBar(
         title: Text('Communities Page'),
       ),
-      body: currentPageIndex == 0 ? CommunityList() : currentPageIndex == 1 ? AiChatView() : NotesScreen(),
+      // body: currentPageIndex == 0 ? CommunityList() : currentPageIndex == 1 ? AiChatView() : NotesScreen(),
+      body: [
+        CommunityList(),
+        AiChatView(),
+        NotesScreen(),
+        PdfUploadScreen(),
+      ][currentPageIndex],
     );
   }
 
