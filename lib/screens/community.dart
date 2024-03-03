@@ -61,10 +61,8 @@ class _CommunityPageState extends State<CommunityPage> {
             label: 'Home',
           ),
           NavigationDestination(
-            icon: Badge(
-              child: Icon(Icons.chat_bubble_rounded),
-            ),
-            label: 'Messages',
+            icon: Icon(Icons.chat_bubble_rounded),
+            label: 'ChatBot',
           ),
         ],
       ),

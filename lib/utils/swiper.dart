@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:swipe_cards/swipe_cards.dart';
 
+import 'package:studyr/chat/userChat.dart';
+
 class StudySession {
   StudySession({
     required this.sessionName,
@@ -49,10 +51,9 @@ class _SwiperState extends State<Swiper> {
       _swipeItems.add(SwipeItem(
           content: widget.sessions[0],
           likeAction: () {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text("Liked "),
-              duration: Duration(milliseconds: 500),
-            ));
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+              return UserChatView();
+            } ),);
           },
           nopeAction: () {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
