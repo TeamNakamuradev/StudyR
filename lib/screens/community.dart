@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:studyr/chat/chatbot.dart';
 import 'package:studyr/screens/swipe_page.dart';
 import 'package:studyr/utils/hex.dart';
 
@@ -63,7 +64,7 @@ class _CommunityPageState extends State<CommunityPage> {
       appBar: AppBar(
         title: Text('Communities Page'),
       ),
-      body: [CommunityList(), SizedBox()][currentPageIndex],
+      body: [CommunityList(), ChatView()][currentPageIndex],
     );
   }
 
