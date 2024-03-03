@@ -1,8 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'dart:convert';
-import 'package:http/io_client.dart';
+import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:studyr/secrets.dart';
 
 class HexColor extends Color {
   static int _getColorFromHex(String hexColor) {
@@ -27,18 +29,35 @@ class SignupPage extends StatefulWidget {
 class _SignupPageState extends State<SignupPage> {
   final idController =
       TextEditingController(); // Create a controller for the username
-  final rmnController =
-      TextEditingController(); // Create a controller for the mobileNumber
-  final uidController =
-      TextEditingController(); // Create a controller for the identificationNumber
   final pwdController =
       TextEditingController(); // Create a controller for the password
+  final fnameController = TextEditingController();
+
+  void showSignupFailedPopup(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Signup Failed'),
+          content: Text('There was an error during signup.'),
+          actions: <Widget>[
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Close'),
+            )
+          ],
+        );
+      },
+    );
+  }
+
   @override
   void dispose() {
     idController.dispose();
     pwdController.dispose();
-    rmnController.dispose();
-    uidController.dispose();
+    fnameController.dispose();
     super.dispose();
   }
 
@@ -135,7 +154,7 @@ class _SignupPageState extends State<SignupPage> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 0.0),
                       child: TextField(
-                        controller: rmnController,
+                        controller: fnameController,
                         decoration: const InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
@@ -149,7 +168,7 @@ class _SignupPageState extends State<SignupPage> {
                             Icons.phone,
                             color: Color.fromARGB(255, 83, 76, 175),
                           ),
-                          hintText: "Registered Moblie Number",
+                          hintText: "Name",
                           hintStyle: TextStyle(
                             color: Color.fromARGB(255, 103, 101, 101),
                           ),
@@ -213,36 +232,36 @@ class _SignupPageState extends State<SignupPage> {
                       onPressed: () async {
                         SharedPreferences prefs =
                             await SharedPreferences.getInstance();
-                        prefs.setString('username', idController.text);
-                        prefs.setString('org', uidController.text);
-                        prefs.setString('rmn', rmnController.text);
-                        prefs.setString('password', pwdController.text);
 
-                        var url = Uri.https('localhost:3000', '/signup');
-                        var httpClient = HttpClient();
-                        httpClient.badCertificateCallback =
-                            (X509Certificate cert, String host, int port) {
-                          return true;
-                        };
-                        var ioClient = IOClient(httpClient);
+                        // prefs.setString('username', idController.text);
+                        // prefs.setString('fullname', fnameController.text);
+                        // prefs.setString('password', pwdController.text);
 
-                        var response = await ioClient.post(
+                        var url = Uri.parse("$server_url/register");
+                        // var httpClient = HttpClient();
+                        // httpClient.badCertificateCallback =
+                        //     (X509Certificate cert, String host, int port) {
+                        //   return true;
+                        // };
+                        // var ioClient = IOClient(httpClient);
+
+                        var response = await http.post(
                           url,
                           headers: {"Content-Type": "application/json"},
                           body: jsonEncode({
                             'username': idController.text,
-                            'org': uidController.text,
-                            'rmn': rmnController.text,
+                            'name': fnameController.text,
                             'password': pwdController.text,
                           }),
                         );
                         var statusCode = response.statusCode;
-                        ioClient.close();
 
                         if (statusCode == 200) {
                           Navigator.pushNamed(context, '/login');
                         } else {
                           print("Signup Failed");
+                          showSignupFailedPopup(context);
+                          
                         }
                       },
                       child: const Center(
