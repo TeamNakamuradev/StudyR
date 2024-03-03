@@ -64,7 +64,7 @@ Studyr utilizes a relational database to store data, with main entities includin
 - **User**: Stores user information such as name, password and communities which user joined.
 - **Community**: Stores details about communities like name, list of participants, list of admin(for control access) and description.
 
-**Work-Flow** 
+## Work-Flow 
 
 
 
@@ -100,7 +100,7 @@ Studyr utilizes a relational database to store data, with main entities includin
 ### Group Study Video Call Feature
 -It is an integral component of our platform, designed to facilitate collaborative learning among students in a virtual environment. With this feature, students can engage in interactive group study sessions, enabling them to communicate, share ideas, and work together on academic tasks effectively.
 
-##Conclusion:
+## Conclusion:
 - Studyr is a valuable tool for students who want to improve their collaboration, engagement, communication, and access to resources. It is a user-friendly and efficient platform that can help students succeed in their studies.
 
 
