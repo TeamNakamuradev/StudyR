@@ -9,6 +9,7 @@ Studyr is a mobile application designed to facilitate collaborative studying amo
 - **Notes**: Students can create and delete notes.
 - **Leaderboard**: Students can compete on a leaderboard based on points earned from activities.
 - **Virtual friend** :Chatbot for Student Doubt Resolution.
+- **Ask PDF** :Users can upload and ask for specific PDF documents.
   
 ## Purpose
 Studyr is a valuable tool designed to enhance collaboration, engagement, communication, and access to resources for students. It offers a user-friendly and efficient platform to support student success in their studies.
@@ -65,6 +66,8 @@ Studyr utilizes a relational database to store data, with main entities includin
 - **Community**: Stores details about communities like name, list of participants, list of admin(for control access) and description.
 - **Post**: Stores information about posts, such as their title, content, and author.
 - **Message**: Stores information about messages, such as their sender, recipient, and content.
+
+  
 ## Work-Flow 
 
 
@@ -97,8 +100,13 @@ Studyr utilizes a relational database to store data, with main entities includin
 ### Virtual friend
 - Chatbot for Student Doubt Resolution
 - It is an innovative chatbot designed to assist students in resolving their academic doubts and queries efficiently. Developed specifically for students, Virtual Friend serves as a reliable companion throughout their      educational journey, offering instant assistance and guidance whenever needed.
+  
 ### Group Study Video Call Feature
--It is an integral component of our platform, designed to facilitate collaborative learning among students in a virtual environment. With this feature, students can engage in interactive group study sessions, enabling them to communicate, share ideas, and work together on academic tasks effectively.
+- It is an integral component of our platform, designed to facilitate collaborative learning among students in a virtual environment. With this feature, students can engage in interactive group study sessions, enabling them to communicate, share ideas, and work together on academic tasks effectively.
+
+### Ask PDF
+- It streamlines the process of creating educational questions by leveraging the content of PDF documents, enabling users to quickly generate relevant and effective questions for learning and assessment purposes.It is  tailored to specifically for PDF documents. Users could enter their queries, and the system would retrieve relevant PDF files containing the requested information.
+
 
 ## Conclusion:
 - Studyr is a valuable tool for students who want to improve their collaboration, engagement, communication, and access to resources. It is a user-friendly and efficient platform that can help students succeed in their studies.
