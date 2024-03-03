@@ -1,5 +1,15 @@
 # Studyr
 
+## Overview
+Studyr is a mobile application designed to facilitate collaborative studying among students. It offers various features including:
+
+- **Community**: Students can join or create communities based on their interests and subjects.
+- **One on One Chat**: Students can communicate with each other within communities or through private messages.
+- **Group Study Video Call Feature**: group study sessions using video calls.
+- **Notes**: Students can create and delete notes.
+- **Leaderboard**: Students can compete on a leaderboard based on points earned from activities.
+- **Virtual friend** :Chatbot for Student Doubt Resolution.
+  
 ## Purpose
 Studyr is a valuable tool designed to enhance collaboration, engagement, communication, and access to resources for students. It offers a user-friendly and efficient platform to support student success in their studies.
 
@@ -44,4 +54,53 @@ Studyr caters to a diverse audience including students from various educational 
 
 6. **Testing**:
    - Test the release APK thoroughly to ensure that it works as expected. If there are any issues, you might need to troubleshoot or reach out.
+
+## Architecture
+The Studyr app follows a client-server architecture. The client is developed using Flutter, while the server is built with Node.js. Communication between the client and server occurs via a RESTful API.
+
+
+## Data Model
+Studyr utilizes a relational database to store data, with main entities including:
+- **User**: Stores user information such as name, password and communities which user joined.
+- **Community**: Stores details about communities like name, list of participants, list of admin(for control access) and description.
+
+##**Work-Flow** 
+   ![Work flow Image](Image.png)
+
+
+## Features
+
+### Communities
+- Students can join or create communities based on interests and subjects.
+- Communities support multiple members.
+- Members can engage in various activities within communities including posting messages, sharing notes, and joining video calls.
+- Swipe feature to create a communities
+
+### Chat
+- Students can chat within communities or through private messages.
+- Chat functionality supports both one-on-one and group conversations.
+- Students can exchange text messages.
+
+### Notes
+- Students can create and delete.
+
+### Leaderboard
+(still in progress)
+- Students can compete on a leaderboard based on points earned from activities.
+- Points are awarded for actions such as posting, commenting, and participating in video calls.
+- The leaderboard is updated in real-time.
+
+### Virtual friend
+- Chatbot for Student Doubt Resolution
+- It is an innovative chatbot designed to assist students in resolving their academic doubts and queries efficiently. Developed specifically for students, Virtual Friend serves as a reliable companion throughout their      educational journey, offering instant assistance and guidance whenever needed.
+### Group Study Video Call Feature
+-It is an integral component of our platform, designed to facilitate collaborative learning among students in a virtual environment. With this feature, students can engage in interactive group study sessions, enabling them to communicate, share ideas, and work together on academic tasks effectively.
+
+##Conclusion:
+Studyr is a valuable tool for students who want to improve their collaboration, engagement, communication, and access to resources. It is a user-friendly and efficient platform that can help students succeed in their studies.
+
+
+
+
+
 
