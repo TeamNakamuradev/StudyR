@@ -5,6 +5,7 @@ import 'package:studyr/chat/chatbot.dart';
 import 'package:studyr/screens/swipe_page.dart';
 import 'package:studyr/utils/hex.dart';
 import 'package:studyr/utils/swiper.dart';
+import 'package:studyr/screens/notes_screen.dart';
 
 final List<StudySession> sessions = [
     StudySession(sessionName: "Session1",sessionID: "sessionID", members: ["User1"], topics: ["topics"]),
@@ -60,6 +61,14 @@ class _CommunityPageState extends State<CommunityPage> {
         onDestinationSelected: (int index) {
           setState(() {
             currentPageIndex = index;
+            if(index==2){
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => NotesScreen(),
+                ),
+              );
+            }
           });
         },
         indicatorColor: Color.fromARGB(255, 105, 160, 244),
@@ -74,6 +83,7 @@ class _CommunityPageState extends State<CommunityPage> {
             icon: Icon(Icons.chat_bubble_rounded),
             label: 'ChatBot',
           ),
+          NavigationDestination(icon: Icon(Icons.notes), label: 'Notes'),
         ],
       ),
       appBar: AppBar(

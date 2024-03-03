@@ -61,7 +61,7 @@ class _NotesScreenState extends State<NotesScreen> {
           crossAxisCount: 2, 
           crossAxisSpacing: 8.0, 
           mainAxisSpacing: 8.0, 
-          childAspectRatio: 0.1,
+          childAspectRatio: 0.5,
         ),
         itemCount: notes.length,
         itemBuilder: (context, index) {
@@ -215,7 +215,7 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
   }
 
   void _startContinuousSync() {
-    Timer.periodic(Duration(seconds: 5), (timer) async {
+    Timer.periodic(Duration(seconds:3), (timer) async {
       if (noteController.text.isEmpty) return;
 
       if (isSyncing) return;
