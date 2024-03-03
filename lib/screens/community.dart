@@ -35,6 +35,13 @@ class CommunityPage extends StatefulWidget {
 
 class _CommunityPageState extends State<CommunityPage> {
   int currentPageIndex = 0;
+  
+  var communities = [
+    Community(id: '1', name: 'Community 1', users: ['User1', 'User2']),
+    Community(id: '2', name: 'Community 2', users: ['User3', 'User4']),
+    Community(id: '3', name: 'Community 3', users: ['User5', 'User6']),
+    
+  ];
 
   @override
   void initState() {
@@ -138,7 +145,7 @@ class _CommunityPageState extends State<CommunityPage> {
             ),
           );
         },
-      ),
-    );
+      );
+    
   }
 }
