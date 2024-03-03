@@ -1,17 +1,29 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:studyr/chat/chatbot.dart';
+import 'package:studyr/chat/chatView.dart';
 import 'package:studyr/screens/swipe_page.dart';
 import 'package:studyr/utils/hex.dart';
 import 'package:studyr/utils/swiper.dart';
 import 'package:studyr/screens/notes_screen.dart';
 
 final List<StudySession> sessions = [
-    StudySession(sessionName: "Session1",sessionID: "sessionID", members: ["User1"], topics: ["topics"]),
-    StudySession(sessionName: "Session2",sessionID: "sessionID", members: ["User2"], topics: ["topics"]),
-    StudySession(sessionName: "Session3",sessionID: "sessionID", members: ["User3"], topics: ["topics"])
-  ];
+  StudySession(
+      sessionName: "Session1",
+      sessionID: "sessionID",
+      members: ["User1"],
+      topics: ["topics"]),
+  StudySession(
+      sessionName: "Session2",
+      sessionID: "sessionID",
+      members: ["User2"],
+      topics: ["topics"]),
+  StudySession(
+      sessionName: "Session3",
+      sessionID: "sessionID",
+      members: ["User3"],
+      topics: ["topics"])
+];
 
 class Community {
   final String id;
@@ -36,20 +48,17 @@ class CommunityPage extends StatefulWidget {
 
 class _CommunityPageState extends State<CommunityPage> {
   int currentPageIndex = 0;
-  
+
   var communities = [
     Community(id: '1', name: 'Community 1', users: ['User1', 'User2']),
     Community(id: '2', name: 'Community 2', users: ['User3', 'User4']),
     Community(id: '3', name: 'Community 3', users: ['User5', 'User6']),
     Community(id: '4', name: 'Community 4', users: ['User7', 'User8']),
     Community(id: '5', name: 'Community 5', users: ['User9', 'User10']),
-
-
   ];
 
   @override
   void initState() {
-    
     super.initState();
     currentPageIndex = 0;
   }
@@ -81,16 +90,16 @@ class _CommunityPageState extends State<CommunityPage> {
       appBar: AppBar(
         title: Text('Communities Page'),
       ),
-      body: currentPageIndex == 0 ? CommunityList() : currentPageIndex == 1 ? ChatView() : NotesScreen(),
+      body: currentPageIndex == 0 ? CommunityList() : currentPageIndex == 1 ? AiChatView() : NotesScreen(),
     );
   }
 
   ListView CommunityList() {
     return ListView.builder(
-      itemCount: widget.communities.length - 2 ,
+      itemCount: widget.communities.length - 2,
       itemBuilder: (context, index) {
         return Card(
-          color: HexColor('#9faee9'), 
+          color: HexColor('#9faee9'),
           child: InkWell(
             onTap: () {
               Navigator.push(
@@ -102,53 +111,52 @@ class _CommunityPageState extends State<CommunityPage> {
             },
             child: Stack(
               children: [
-               
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('${communities[index].name}',
-                            style:
-                                TextStyle(fontSize: 28, color: Colors.white)),
-                        // Text('Community ID: ${communities[index].id}',
-                        //     style:
-                        //         TextStyle(fontSize: 16, color: Colors.white)),
-                        // Text('Users: ${communities[index].users.join(', ')}',
-                        //     style:
-                        //         TextStyle(fontSize: 16, color: Colors.white)),
-                        Row(
-                          children: [
-                            Expanded(child: Container()),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                IconButton(
-                                  icon: Icon(Icons.info),
-                                  onPressed: () {
-                                    Navigator.pushNamed(context, '/info');
-                                  },
-                                ),
-                                IconButton(
-                                  icon: Icon(Icons.leaderboard),
-                                  onPressed: () {
-                                    Navigator.pushNamed(
-                                        context, '/leaderboard');
-                                  },
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('${communities[index].name}',
+                          style: TextStyle(fontSize: 28, color: Colors.white)),
+                      // Text('Community ID: ${communities[index].id}',
+                      //     style:
+                      //         TextStyle(fontSize: 16, color: Colors.white)),
+                      // Text('Users: ${communities[index].users.join(', ')}',
+                      //     style:
+                      //         TextStyle(fontSize: 16, color: Colors.white)),
+                      Row(
+                        children: [
+                          Expanded(child: Container()),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              IconButton(
+                                icon: Icon(Icons.info),
+                                onPressed: () {
+                                  Navigator.pushNamed(context, '/info');
+                                },
+                              ),
+                              IconButton(
+                                icon: Icon(Icons.leaderboard),
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    '/leaderboard',
+                                  );
+                                },
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          );
-        },
-      );
-    
+          ),
+        );
+      },
+    );
   }
 }
