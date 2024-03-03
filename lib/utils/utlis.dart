@@ -24,9 +24,11 @@ Future<List<String>?> getLoginDetails() async {
 }
 
 
-Future<void> saveLoginDetails(String username, String password) async {
+Future<void> saveLoginDetails(String username, String password,String token) async {
   final prefs = await SharedPreferences.getInstance();
   prefs.setString("username", username);
   prefs.setString("password", password);
+  prefs.setString("logintoken", token);
+
 }
 

@@ -206,12 +206,13 @@ class _LoginPageState extends State<LoginPage> {
                         if (response.statusCode == 200) {
                           
                           var responseBody = jsonDecode(response.body);
-                          // print('Token: ${responseBody['token']}');
+                          print('Token: ${responseBody['token']}');
                           // print('UserID: ${responseBody['ID']}');
 
                           saveLoginDetails(
                             idController.text,
                             pwdController.text,
+                            responseBody['token'],
                           );
 
                           Navigator.pushNamed(context, "/community");
