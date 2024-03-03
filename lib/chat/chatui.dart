@@ -4,16 +4,26 @@ import 'package:dash_chat_2/dash_chat_2.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-class UserChatView extends StatefulWidget {
-  const UserChatView({Key? key}) : super(key: key);
+class ChatView extends StatefulWidget {
+  const ChatView({
+    Key? key,
+    required this.firstName,
+    required this.lastName,
+    required this.user2Name,
+    required this.promptText,
+  }) : super(key: key);
+  final String promptText;
+  final String firstName;
+  final String lastName;
+  final String user2Name;
 
   @override
-  State<UserChatView> createState() => _UserChatViewState();
+  State<ChatView> createState() => _ChatViewState();
 }
 
-class _UserChatViewState extends State<UserChatView> {
-  ChatUser human = ChatUser(id: '1', firstName: 'Rohith', lastName: 'Kumar');
-  ChatUser bot = ChatUser(id: '2', firstName: 'User');
+class _ChatViewState extends State<ChatView> {
+  late ChatUser human;
+  late ChatUser bot;
   final url = Constant().baseUrl + Constant().apiKey;
   List<ChatMessage> allMessages = [];
   List<ChatUser> typing = [];
@@ -25,8 +35,8 @@ class _UserChatViewState extends State<UserChatView> {
     typing.add(bot);
     setState(() {});
     var promptText = """
-          autocomplete this chat reply like you are my friend and we are about to study. only reply in few lines :
-          ${(allMessages.length > 1) ? "you: " + allMessages[1].text: ""}
+          autocomplete this chat, ${widget.promptText} :
+          ${(allMessages.length > 1) ? "you: " + allMessages[1].text : ""}
           user: ${m.text}
           you: (reply with whatever you want to complete here. dont reply all chats)
     """;
@@ -57,6 +67,14 @@ class _UserChatViewState extends State<UserChatView> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    human = ChatUser(
+        id: '1', firstName: widget.firstName, lastName: widget.lastName);
+    bot = ChatUser(id: '2', firstName: widget.user2Name);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: DashChat(
@@ -69,5 +87,31 @@ class _UserChatViewState extends State<UserChatView> {
         messages: allMessages,
       ),
     );
+  }
+}
+
+class AiChatView extends StatelessWidget {
+  const AiChatView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ChatView(
+        firstName: "Rohith",
+        lastName: "Kumar",
+        user2Name: "Odin",
+        promptText: " reply like an old wise norse god");
+  }
+}
+
+class UserChatView extends StatelessWidget {
+  const UserChatView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ChatView(
+        firstName: "Rohith",
+        lastName: "Kumar",
+        user2Name: "User1",
+        promptText: " reply like you are my friend and we are about to study. only reply in few lines");
   }
 }

@@ -12,7 +12,7 @@ class ChatView extends StatefulWidget {
 }
 
 class _ChatViewState extends State<ChatView> {
-  ChatUser human = ChatUser(id: '1', firstName: 'Mostafa', lastName: 'Mohamed');
+  ChatUser human = ChatUser(id: '1', firstName: 'Rohith', lastName: 'Kumar');
   ChatUser bot = ChatUser(id: '2', firstName: 'Odin');
   final url = Constant().baseUrl + Constant().apiKey;
   List<ChatMessage> allMessages = [];

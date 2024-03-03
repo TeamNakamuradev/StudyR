@@ -95,7 +95,7 @@ class _CommunityPageState extends State<CommunityPage> {
 
   ListView CommunityList() {
     return ListView.builder(
-      itemCount: widget.communities.length,
+      itemCount: widget.communities.length - 2 ,
       itemBuilder: (context, index) {
         return Card(
           color: HexColor('#9faee9'), 
