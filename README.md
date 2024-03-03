@@ -73,7 +73,7 @@ Studyr utilizes a relational database to store data, with main entities includin
 
 
 
-   ![Work flow Image](Image.png)
+   ![Work flow Image](ImageWorkflow.png)
 
 
 ## Features
