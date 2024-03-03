@@ -85,7 +85,7 @@ class MyApp extends StatelessWidget {
 ),
         '/info':(context) => CommunityInfoPage()
       },
-      initialRoute: '/home',
+      initialRoute: '/community',
     );
   }
 }

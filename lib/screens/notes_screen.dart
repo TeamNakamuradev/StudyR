@@ -14,7 +14,7 @@ class AddNoteScreen extends StatefulWidget {
 
 class _NotesScreenState extends State<NotesScreen> {
   List<String> notes = [];
-  Color themeColor = const Color.fromARGB(255, 234, 237, 240);
+  Color themeColor = Color.fromARGB(255, 237, 237, 240);
 
   @override
   void initState() {

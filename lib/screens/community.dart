@@ -61,14 +61,6 @@ class _CommunityPageState extends State<CommunityPage> {
         onDestinationSelected: (int index) {
           setState(() {
             currentPageIndex = index;
-            if(index==2){
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => NotesScreen(),
-                ),
-              );
-            }
           });
         },
         indicatorColor: Color.fromARGB(255, 105, 160, 244),
@@ -89,7 +81,7 @@ class _CommunityPageState extends State<CommunityPage> {
       appBar: AppBar(
         title: Text('Communities Page'),
       ),
-      body: [CommunityList(), ChatView()][currentPageIndex],
+      body: currentPageIndex == 0 ? CommunityList() : currentPageIndex == 1 ? ChatView() : NotesScreen(),
     );
   }
 
