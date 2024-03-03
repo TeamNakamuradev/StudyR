@@ -64,7 +64,7 @@ Studyr utilizes a relational database to store data, with main entities includin
 - **User**: Stores user information such as name, password and communities which user joined.
 - **Community**: Stores details about communities like name, list of participants, list of admin(for control access) and description.
 
-##**Work-Flow** 
+**Work-Flow** 
 
 
 
