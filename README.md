@@ -76,6 +76,30 @@ Studyr utilizes a relational database to store data, with main entities includin
    ![Work flow Image](ImageWorkflow.png)
 
 
+
+## Backend
+Visit Backend Sourcecode 
+![Backend](https://github.com/TeamNakamuradev/studyr-server)
+
+Installation Guide:
+``` 
+bun install
+
+```
+
+```
+bun dev
+
+```
+``` 
+npm i
+
+ ```
+```
+npm run dev
+
+```
+
 ## Features
 
 ### Communities
