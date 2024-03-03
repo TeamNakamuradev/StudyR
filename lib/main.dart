@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
       darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
       routes: {
-        '/home': (context) => Swiper(sessions: sessions,),
+        '/home': (context) => Home(),
         '/pdfviewer': (context) => PDFViewer(
               pdfUrl:
                   'https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf',
@@ -104,7 +104,7 @@ class MyApp extends StatelessWidget {
               communityName: '',
             ),
       },
-      initialRoute: '/community',
+      initialRoute: '/home',
     );
   }
 }

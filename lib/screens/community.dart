@@ -4,6 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:studyr/chat/chatbot.dart';
 import 'package:studyr/screens/swipe_page.dart';
 import 'package:studyr/utils/hex.dart';
+import 'package:studyr/utils/swiper.dart';
+
+final List<StudySession> sessions = [
+    StudySession(sessionName: "Session1",sessionID: "sessionID", members: ["User1"], topics: ["topics"]),
+    StudySession(sessionName: "Session2",sessionID: "sessionID", members: ["User2"], topics: ["topics"]),
+    StudySession(sessionName: "Session3",sessionID: "sessionID", members: ["User3"], topics: ["topics"])
+  ];
 
 class Community {
   final String id;
@@ -31,7 +38,7 @@ class _CommunityPageState extends State<CommunityPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    
     super.initState();
     currentPageIndex = 0;
   }
@@ -55,7 +62,7 @@ class _CommunityPageState extends State<CommunityPage> {
           ),
           NavigationDestination(
             icon: Badge(
-              child: Icon(Icons.messenger_sharp),
+              child: Icon(Icons.chat_bubble_rounded),
             ),
             label: 'Messages',
           ),
@@ -79,10 +86,7 @@ class _CommunityPageState extends State<CommunityPage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => SwipePage(
-                    title: widget.communities[index].name,
-                    community: widget.communities[index],
-                  ),
+                  builder: (context) => Swiper(sessions: sessions),
                 ),
               );
             },
