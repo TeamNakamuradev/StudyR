@@ -3,6 +3,23 @@ import 'package:studyr/chat/constant.dart';
 import 'package:dash_chat_2/dash_chat_2.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/link.dart';
+
+Future<void> _launchInWebView(Uri url) async {
+  if (!await launchUrl(url, mode: LaunchMode.inAppWebView)) {
+    throw Exception('Could not launch $url');
+  }
+}
+
+_launchURL() async {
+  final Uri url = Uri.parse('https://flutter.dev');
+  if (await canLaunch(url.toString())) {
+    await launch(url.toString());
+  } else {
+    throw Exception('Could not launch ${url}');
+  }
+}
 
 class UserChatView extends StatefulWidget {
   const UserChatView({Key? key}) : super(key: key);
@@ -26,7 +43,7 @@ class _UserChatViewState extends State<UserChatView> {
     setState(() {});
     var promptText = """
           autocomplete this chat reply like you are my friend and we are about to study. only reply in few lines :
-          ${(allMessages.length > 1) ? "you: " + allMessages[1].text: ""}
+          ${(allMessages.length > 1) ? "you: " + allMessages[1].text : ""}
           user: ${m.text}
           you: (reply with whatever you want to complete here. dont reply all chats)
     """;
@@ -59,6 +76,23 @@ class _UserChatViewState extends State<UserChatView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Chat'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.video_call,
+              color: Colors.green,
+            ),
+            onPressed: () {
+              // do something
+              launchUrl(
+                Uri.parse('https://meet.google.com/new'),
+              );
+            },
+          )
+        ],
+      ),
       body: DashChat(
         scrollToBottomOptions: ScrollToBottomOptions(disabled: false),
         typingUsers: typing,
